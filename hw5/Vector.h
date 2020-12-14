@@ -3,19 +3,18 @@
 
 #include "Trace.h"
 
-static int countpv = 0;
-
 template<class T> class vector
 {
     T* v;
     int sz;
-    int countv = 0;
+    static int countv;
     public:
         vector(int size) : sz(size)
         {
             v = new T [size];
             Trace t("vector<T>::vector(int)");
-            std::cout << "  count = " << ++countv << endl;
+            ++countv;
+            std::cout << "  count = " << countv << endl;
         }
         T& elem(int i) { return v[i]; }
         T& operator[](int i) { return v[i]; }
@@ -28,6 +27,7 @@ template<class T> class vector
 
 template<> class vector<void*>
 {
+    static int countpv;
     public:
         void **p;
         vector()
