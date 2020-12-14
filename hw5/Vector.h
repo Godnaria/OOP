@@ -13,8 +13,7 @@ template<class T> class vector
         {
             v = new T [size];
             Trace t("vector<T>::vector(int)");
-            ++countv;
-            std::cout << "  count = " << countv << endl;
+            std::cout << "  count = " << ++countv << endl;
         }
         T& elem(int i) { return v[i]; }
         T& operator[](int i) { return v[i]; }
